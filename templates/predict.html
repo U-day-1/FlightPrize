@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pred.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="signup">Prediction Form</h1>
+
+            <form action="{{ url_for('predict') }}" method="POST">
+                <div class="form-row">
+                    <div class="inputBox">
+                        <label for="airline">Airline:</label>
+                        <select id="airline" name="airline" required class="styled-select">
+                            <option value="" disabled selected>Select an airline</option>
+                            {% for option in airline_options %}
+                                <option value="{{ option }}" {% if form_data and form_data['airline'] == option %}selected{% endif %}>{{ option }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="inputBox">
+                        <label for="source_city">Source City:</label>
+                        <select id="source_city" name="source_city" required class="styled-select">
+                            <option value="" disabled selected>Select a source city</option>
+                            {% for option in source_city_options %}
+                                <option value="{{ option }}" {% if form_data and form_data['source_city'] == option %}selected{% endif %}>{{ option }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="inputBox">
+                        <label for="departure_time">Departure Time:</label>
+                        <select id="departure_time" name="departure_time" required class="styled-select">
+                            <option value="" disabled selected>Select departure time</option>
+                            {% for option in departure_time_options %}
+                                <option value="{{ option }}" {% if form_data and form_data['departure_time'] == option %}selected{% endif %}>{{ option }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="inputBox">
+                        <label for="stops">Stops:</label>
+                        <input type="number" id="stops" name="stops" required min="0" value="{{ form_data['stops'] if form_data else '' }}">
+                    </div>
+
+                    <div class="inputBox">
+                        <label for="arrival_time">Arrival Time:</label>
+                        <select id="arrival_time" name="arrival_time" required class="styled-select">
+                            <option value="" disabled selected>Select arrival time</option>
+                            {% for option in arrival_time_options %}
+                                <option value="{{ option }}" {% if form_data and form_data['arrival_time'] == option %}selected{% endif %}>{{ option }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="inputBox">
+                        <label for="destination_city">Destination City:</label>
+                        <select id="destination_city" name="destination_city" required class="styled-select">
+                            <option value="" disabled selected>Select a destination city</option>
+                            {% for option in destination_city_options %}
+                                <option value="{{ option }}" {% if form_data and form_data['destination_city'] == option %}selected{% endif %}>{{ option }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="inputBox">
+                        <label for="class">Class:</label>
+                        <select id="class" name="class" required class="styled-select">
+                            <option value="" disabled selected>Select a class</option>
+                            {% for option in class_options %}
+                                <option value="{{ option }}" {% if form_data and form_data['class'] == option %}selected{% endif %}>{{ option }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="inputBox">
+                        <label for="duration">Duration:</label>
+                        <input type="number" step="any" id="duration" name="duration" required value="{{ form_data['duration'] if form_data else '' }}">
+                    </div>
+
+                    <div class="inputBox">
+                        <label for="days_left">Days Left:</label>
+                        <input type="number" id="days_left" name="days_left" required min="0" value="{{ form_data['days_left'] if form_data else '' }}">
+                    </div>
+                </div>
+                <div class="button-container">
+                <button class="enter" type="submit">Submit</button>
+                </div>
+
+
+
+                <div class="home-link">
+                    <a href="{{ url_for('home') }}">Back to Home</a>
+                </div>
+            </form>
+
+            {% if prediction is not none %}
+                <div class="result">
+                    <h2>Prediction Result: {{ prediction }}</h2>
+                </div>
+            
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+
+</html>

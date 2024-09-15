@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Set background to black */
+            color: #fff; /* Set text color to white for contrast */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .video-container {
+            text-align: center;
+            flex: 1;
+        }
+
+        video {
+            width: 80%; /* Adjust as needed */
+            max-width: 800px; /* Adjust as needed */
+            border: 2px solid #fff; /* Optional border color to contrast with the black background */
+            border-radius: 8px; /* Optional border radius */
+        }
+
+        section {
+            flex: 1;
+            text-align: left;
+            padding: 20px;
+            text-align: center; 
+        }
+
+        #text {
+            color: #fff; /* White text color */
+            font-family: 'Pacifico', cursive;
+            font-size: 2em; /* Adjust size as needed */
+            margin: 0;
+            text-align: center; 
+        }
+
+        a {
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 1.2em; 
+            text-align: center; 
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+            text-align: center; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section>
+            <h2 id="text">Coming Soon</h2>
+            <a href="{{ url_for('home') }}">Back to Home</a>
+        </section>
+        <div class="video-container">
+            <video autoplay loop>
+                <source src="{{ url_for('static', filename='videos/toothless.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</body>
+</html>

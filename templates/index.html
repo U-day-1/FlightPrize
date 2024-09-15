@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          let text = document.getElementById('text');
+          let bird1 = document.getElementById('bird1');
+          let bird2 = document.getElementById('bird2');
+          let btn = document.getElementById('btn');
+          let rocks = document.getElementById('rocks');
+          let water = document.getElementById('water');
+          let header = document.getElementById('header');
+      
+          window.addEventListener('scroll', function(){
+            let value = window.scrollY;
+      
+            text.style.top = 50 + value * -0.1 + '%';
+            bird1.style.top = 10 + value * -0.2 + 'px';
+            bird1.style.left = value * 1.3 + 'px';
+            bird2.style.top = 50 + value * -0.5 + 'px';
+            bird2.style.left = value * -5 + 'px';
+            btn.style.marginTop = value * 1.5 + 'px';
+            rocks.style.top = value * -0.12 + 'px';
+            header.style.top = value * 0.5 + 'px';
+          });
+        });
+      </script>
+      
+</head>
+<body>
+    <header id="header">
+        <a href="#" class="logo">DSAI</a>
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('video') }}">About</a></li>
+          <li><a href="{{ url_for('predict') }}">Predict</a></li>
+          <li><a href="{{ url_for('video') }}">Contact</a></li>
+        </ul>
+      </header>
+      
+      <section>
+        <h2 id="text"><span>Check flight prices</span><br>Flight Dheko</h2>
+        
+        <img src="{{ url_for('static', filename='images/b2.png') }}" alt="bird1" id="bird1">
+        
+        <img src="{{ url_for('static', filename='images/b1.png') }}" alt="bird2" id="bird2">
+        
+        <a href="{{ url_for('video') }}" id="btn">Explore</a>
+        
+        <img src="{{ url_for('static', filename='images/b4.png') }}" alt="rocks" id="rocks">
+        
+        <img src="{{ url_for('static', filename='images/b5.png') }}" alt="water" id="water">
+        
+      </section>
+      <div class="sec">
+        <h2>About the Price Predictor</h2>
+            <p>
+                Welcome to the Price Predictor, your go-to tool for estimating prices based on various input features. Our application leverages advanced machine learning models to provide accurate and reliable price predictions. Whether you're a business owner looking to forecast product prices or an individual interested in price estimation, our tool is designed to meet your needs.
+            </p>
+
+            <h2>How It Works</h2>
+            <p>
+                The Price Predictor utilizes several sophisticated models to deliver precise predictions. Here's a list of models that were used :
+            </p>
+            <ul>
+              <li>Linear Regression</li>
+              <li>Ridge and Lasso</li>
+              <li>Decision Tree </li>
+                <li>Decision Tree </li>
+                <li>Random Forest </li>
+                <li>XGBOOST</li>
+                
+            </ul>
+
+      </div>
+    
+</body>
+</html>
