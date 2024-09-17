@@ -1,12 +1,19 @@
 /* Existing styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+
+
 .singup {
-    color: #000;
+    color: #5c96fa;
+
     text-transform: uppercase;
     letter-spacing: 2px;
     display: block;
     font-weight: bold;
     font-size: x-large;
     margin-top: 1.5em;
+    
 }
 .container {
     display: flex;
